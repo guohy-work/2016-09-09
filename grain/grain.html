@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>郭鸿宇</title>
+    <link href="" rel="stylesheet">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .box {
+        width: 450px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+    }
+    
+    .box span {
+        position: absolute;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: perspective(800px) rotateY(0deg);
+    }
+    
+    .box span em {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .box span em.front {
+        background: url(img/1.jpg);
+        -webkit-transform: translateZ(1px);
+    }
+    
+    .box span em.back {
+        background: url(img/2.jpg);
+        -webkit-transform: translateZ(-1px) scale(-1, 1);
+    }
+    </style>
+    <script>
+    
+    window.onload = function() {
+        var oBox = document.querySelector('.box');
+        var C = 5;
+        var R = 5;
+        for (var i = 0; i < R; i++) {
+            for (var j = 0; j < C; j++) {
+                var oS = document.createElement('span');
+                oS.innerHTML = '<em class="front"></em><em class="back"></em>';
+                oS.style.width = oBox.offsetWidth / C + 'px';
+                oS.style.height = oBox.offsetHeight / R + 'px';
+                oBox.appendChild(oS);
+                var oFront = oS.children[0];
+                var oBack = oS.children[1];
+                oS.style.left = oS.offsetWidth * j + 'px';
+                oS.style.top = oS.offsetHeight * i + 'px';
+                oFront.style.backgroundPosition = oBack.style.backgroundPosition = -j * oS.offsetWidth + 'px -' + i * oS.offsetHeight + 'px';
+                oS.r = i;
+                oS.c = j;
+            }
+        }
+        var aS = oBox.children;
+        var aF = document.querySelectorAll('.front');
+        var aB = document.querySelectorAll('.back');
+        var iNow = 0;
+        var bOk = false;
+        oBox.onclick = function() {
+            if (bOk) {
+                return
+            }
+            bOk = true;
+            iNow++;
+            for (var i = 0; i < aS.length; i++) {;;
+                (function(index) {
+                    setTimeout(function() {
+                        aS[index].style.WebkitTransition = '.3s all ease';
+                        aS[index].style.WebkitTransform = 'perspective(800px) rotateY(180deg)';
+                    }, (aS[index].r + aS[index].c) * 100)
+                })(i);
+            }
+
+            function tranend() {
+                aS[aS.length - 1].removeEventListener('transitionend', tranend, false);
+
+                for (var i = 0; i < aS.length; i++) {
+                    aS[i].style.WebkitTransition = 'none';
+                    aS[i].style.WebkitTransform = 'perspective(800px) rotateY(0deg)';
+                    aS[i].style.opacity = 1;
+                    aF[i].style.backgroundImage = 'url(img/' + (iNow % 6 + 1) + '.jpg)';
+                    aB[i].style.backgroundImage = 'url(img/' + ((iNow + 1) % 6 + 1) + '.jpg)';
+
+                }
+                bOk = false;
+            }
+            aS[aS.length - 1].addEventListener('transitionend', tranend, false);
+        };
+    };
+    </script>
+</head>
+
+<body>
+    <div class="box">
+    </div>
+</body>
+
+</html>

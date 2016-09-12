@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>郭鸿宇</title>
+    <link href="" rel="stylesheet">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .fat{
+    	width: 600px;
+    	overflow: hidden;
+    	margin: 0 auto;
+    }
+    .box {
+    	float: left;
+        width: 200px;
+        height: 200px;
+        position: relative;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -webkit-transition: 1s all ease;
+    }
+    
+    .box div {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        font-size: 50px;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        
+    }
+    
+    .font {
+        background: red;
+        -webkit-transform: translateZ(1px);
+    }
+    
+    .con {
+        background: green;
+        -webkit-transform: translateZ(-1px) scale(-1, 1);
+    }
+    
+    .box:active {
+        -webkit-transform: perspective(800px) rotateY(180deg);
+    }
+    </style>
+    <script>
+    </script>
+</head>
+
+<body>
+    <div class="fat">
+        <div class="box">
+            <div class="font">1</div>
+            <div class="con">1</div>
+        </div>
+        <div class="box">
+            <div class="font">2</div>
+            <div class="con">2</div>
+        </div>
+        <div class="box">
+            <div class="font">3</div>
+            <div class="con">3</div>
+        </div>
+        <div class="box">
+            <div class="font">4</div>
+            <div class="con">4</div>
+        </div>
+        <div class="box">
+            <div class="font">5</div>
+            <div class="con">5</div>
+        </div>
+        <div class="box">
+            <div class="font">6</div>
+            <div class="con">6</div>
+        </div>
+        <div class="box">
+            <div class="font">7</div>
+            <div class="con">7</div>
+        </div>
+        <div class="box">
+            <div class="font">8</div>
+            <div class="con">8</div>
+        </div>
+        <div class="box">
+            <div class="font">9</div>
+            <div class="con">9</div>
+        </div>
+    </div>
+</body>
+
+</html>

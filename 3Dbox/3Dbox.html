@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>郭鸿宇</title>
+	<link href="" rel="stylesheet">
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.box{
+		width: 300px;
+		height: 300px;
+		margin: 100px auto;
+		position: relative;
+		-webkit-transform-style: preserve-3d; 
+		-webkit-transition: 5s all ease;
+		-webkit-transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+	}
+	.box div{
+		width: 300px;
+		height: 300px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		line-height: 300px;
+		font-size: 50px;
+	}
+	.box .first{
+		background: rgba(0, 255, 255, 0.3);
+		-webkit-transform: translateZ(150px);
+	}
+	.box .second{
+		background: rgba(255, 0, 0, 0.3);
+		-webkit-transform: translateZ(-150px);
+	}
+	.box .third{
+		background: rgba(0, 255, 0, 0.3);
+		-webkit-transform: translate(-150px,0) rotateY(-90deg);
+	}
+	.box .fourth{
+		background: rgba(0, 0, 255, 0.3);
+		-webkit-transform: translate(150px,0) rotateY(90deg);
+	}
+	.box .fifth{
+		background: rgba(255, 255, 0, 0.3);
+		-webkit-transform: translate(0,-150px) rotateX(-90deg);
+	}
+	.box .sixth{
+		background: rgba(255, 0, 255, 0.3);
+		-webkit-transform: translate(0,150px) rotateX(90deg);
+	}
+	.box:active {
+        -webkit-transform: perspective(800px) rotateY(360deg) rotateX(360deg);
+    }
+</style>
+<script>
+	
+</script>
+</head>
+
+<body>
+    <div class="box">
+    	<div class="first">正</div>
+    	<div class="second">反</div>
+    	<div class="third">左</div>
+    	<div class="fourth">右</div>
+    	<div class="fifth">上</div>
+    	<div class="sixth">下</div>
+    </div>
+</body>
+</html>

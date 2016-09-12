@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>郭鸿宇</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .box {
+        width: 450px;
+        height: 300px;
+        background: url(img/1.jpg) no-repeat;
+        position: relative;
+        margin: 100px auto;
+    }
+    
+    .box .page1 {
+        width: 225px;
+        height: 300px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform-origin: left top;
+        -webkit-transform: perspective(800px) rotateY(0deg);
+    }
+    
+    .box .page1 div {
+        width: 225px;
+        height: 300px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .box .page1 .front {
+        background: url(img/1.jpg) no-repeat right;
+        -webkit-transform: translateZ(1px);
+    }
+    
+    .box .page1 .back {
+        background: url(img/2.jpg) no-repeat left;
+        -webkit-transform: translateZ(-1px) scale(-1, 1);
+    }
+    
+    .box .page2 {
+        width: 225px;
+        height: 300px;
+        background: url(img/2.jpg) no-repeat right;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+    
+    </style>
+    <script>
+    window.onload = function() {
+        var oBox = document.querySelector('.box');
+        var oPage1 = document.querySelector('.page1');
+        var oPage2 = document.querySelector('.page2');
+        var oFront = document.querySelector('.front');
+        var oBack = document.querySelector('.back');
+        var iNow = 0;
+        var bOk = false;
+        oBox.onclick = function() {
+            if (bOk) {
+                return
+            }
+            bOk = true;
+            oPage1.style.WebkitTransition = '1s all ease';
+            oPage1.style.WebkitTransform = 'perspective(800px) rotateY(-180deg)';
+
+            function tranend() {
+                oPage1.removeEventListener('transitionend', tranend, false);
+                iNow++;
+                oPage1.style.WebkitTransition = 'none';
+                oPage1.style.WebkitTransform = 'perspective(800px) rotateY(0deg)';
+                oBox.style.backgroundImage = 'url(img/' + (iNow % 6 + 1) + '.jpg)';
+                oFront.style.backgroundImage = 'url(img/' + (iNow % 6 + 1) + '.jpg)';
+                oBack.style.backgroundImage = 'url(img/' + ((iNow + 1) % 6 + 1) + '.jpg)';
+                oPage2.style.backgroundImage = 'url(img/' + ((iNow + 1) % 6 + 1) + '.jpg)';
+                bOk = false;
+            }
+            oPage1.addEventListener('transitionend', tranend, false);
+        };
+    };
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="page1">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="page2"></div>
+    </div>
+</body>
+
+</html>

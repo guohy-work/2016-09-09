@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>郭鸿宇</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    @-webkit-keyframes demo {
+        from {
+            left: 0;
+        }
+        to {
+            left: -113px;
+        }
+    }
+    
+    @-moz-keyframes demo {
+        from {
+            left: 0;
+        }
+        to {
+            left: -113px;
+        }
+    }
+    
+    @-ms-keyframes demo {
+        from {
+            left: 0;
+        }
+        to {
+            left: -113px;
+        }
+    }
+    
+    @-o-keyframes demo {
+        from {
+            left: 0;
+        }
+        to {
+            left: -113px;
+        }
+    }
+    
+    @keyframes demo {
+        from {
+            left: 0;
+        }
+        to {
+            left: -113px;
+        }
+    }
+    
+    .box {
+        width: 100px;
+        height: 400px;
+        position: relative;
+        margin: 100px auto;
+        overflow: hidden;
+        border: 2px solid #000;
+    }
+    
+    .son {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: -webkit-repeating-linear-gradient(-45deg, red 0, red 20px, #fff 20px, #fff 40px, green 40px, green 60px, #fff 60px, #fff 80px);
+        background: -moz-repeating-linear-gradient(-45deg, red 0, red 20px, #fff 20px, #fff 40px, green 40px, green 60px, #fff 60px, #fff 80px);
+        background: -ms-repeating-linear-gradient(-45deg, red 0, red 20px, #fff 20px, #fff 40px, green 40px, green 60px, #fff 60px, #fff 80px);
+        background: -o-repeating-linear-gradient(-45deg, red 0, red 20px, #fff 20px, #fff 40px, green 40px, green 60px, #fff 60px, #fff 80px);
+        animation: demo 1s linear infinite;
+    }
+    </style>
+    <script>
+    window.onload = function() {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oSon = document.querySelector('.son');
+
+        function changecolor(obj) {
+            obj.style.background = '-webkit-repeating-linear-gradient(-45deg, ' + oBtn1.value + ' 0, ' + oBtn1.value + ' 20px, #fff 20px, #fff 40px, ' + oBtn2.value + ' 40px, ' + oBtn2.value + ' 60px, #fff 60px, #fff 80px)';
+            obj.style.background = '-moz-repeating-linear-gradient(-45deg, ' + oBtn1.value + ' 0, ' + oBtn1.value + ' 20px, #fff 20px, #fff 40px, ' + oBtn2.value + ' 40px, ' + oBtn2.value + ' 60px, #fff 60px, #fff 80px)';
+            obj.style.background = '-ms-repeating-linear-gradient(-45deg, ' + oBtn1.value + ' 0, ' + oBtn1.value + ' 20px, #fff 20px, #fff 40px, ' + oBtn2.value + ' 40px, ' + oBtn2.value + ' 60px, #fff 60px, #fff 80px)';
+            obj.style.background = '-o-repeating-linear-gradient(-45deg, ' + oBtn1.value + ' 0, ' + oBtn1.value + ' 20px, #fff 20px, #fff 40px, ' + oBtn2.value + ' 40px, ' + oBtn2.value + ' 60px, #fff 60px, #fff 80px)';
+        }
+        oBtn1.onchange = oBtn2.onchange = function() {
+            changecolor(oSon);
+        };
+
+    };
+    </script>
+</head>
+
+<body>
+    <input type="color" id="btn1" value="#FF0000" />
+    <input type="color" id="btn2" value="#00FF00" />
+    <div class="box">
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>
